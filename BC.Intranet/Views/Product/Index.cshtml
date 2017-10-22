@@ -1,0 +1,15 @@
+﻿@model BC.Intranet.Models.ProductListViewModel
+
+<h2>List of products</h2>
+
+<ul class="list-unstyled">
+    <li>@Html.ActionLink("Create product", "CreateProduct", "Product")</li>
+    <li>@Html.ActionLink("Create product type", "CreateProductType", "Product")</li>
+</ul>
+<h3>Products</h3>
+@foreach (var p in Model.Products)
+{
+    <p>@p.Address</p><a class="btn" href="/Product/UploadProductImages/@(p.Id)/0">Upload images</a><br />
+}
+
+

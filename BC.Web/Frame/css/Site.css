@@ -1,0 +1,407 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 0;
+    font-family: "Futura Std Book";
+    color:#4e5452;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+p {
+    font-size:16px;
+}
+
+a {
+    color:#056571;
+}
+
+h1,h2,h3,h4 {
+    font-family: "Futura Std Heavy";
+    color:#414141;
+}
+
+h1 {
+    font-size:30px;
+}
+
+h2 {
+    font-size:26px;
+}
+
+h3 {
+    font-size:22px;
+}
+
+h4 {
+    font-size:18px;
+}
+
+img {
+    width:100%;
+    height:auto;
+}
+
+.melon {
+    color:#FF6A5C;
+}
+
+.clear {
+    clear:both;
+}
+
+.right {
+    float:right;
+}
+
+.left {
+    float:right;
+}
+
+.logo-area {
+    width:160px;
+    height:65px;
+}
+
+    .logo-area img {
+        width:auto;
+        height:100%;
+    } 
+
+    .navbar-inverse {
+    height:65px;
+    background-color:#fff;
+    border:none;
+    box-shadow: 0px 1px 2px #999;
+}
+
+    .navbar-nav {
+    float: right;
+    margin: 0;
+    margin-top:8px;
+}
+
+        .navbar-inverse .navbar-nav > li > a {
+            font-size:16px;
+            color:#414141;
+            font-family: "Futura Std Heavy";
+        }
+
+        .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+            color:#056571;
+        }
+
+        .navbar-inverse .navbar-nav > li > a.melon {
+            color:#FF6A5C;
+        }
+
+        .navbar-inverse .navbar-nav > li > a.melon:hover, .navbar-inverse .navbar-nav > li > a.melon:focus {
+            color:#e25345;
+        }
+
+
+.jumbotron {
+    background-image: url("https://mowido.blob.core.windows.net/icons/start-bg-white.jpg");
+}
+
+.start-search-area {
+    background: rgba(255, 255, 255, .85);
+    height:600px;
+    width:900px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:150px;
+    margin-bottom:45px;
+    border:1px solid #adadad;
+    padding:45px;
+    border-radius:1px;
+}
+
+h1.start-header {
+    font-family: "Futura Std Heavy";
+    font-size:40px;
+    margin-top:0px;
+}
+
+.big-caps {
+    font-size:65px;
+}
+
+.start-search {
+    margin-top:35px;
+    width:100%;
+}
+
+
+input[type=text].start-freetext, select {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #adadad;
+    border-radius: 1px;
+    box-sizing: border-box;
+    background: #fff;
+    color:#414141;
+    margin-right:15px;
+
+}
+
+.btn-search {
+    color:#fff;
+    background-color:#FF6A5C;
+    border-radius:1px;
+    font-family: "Futura Std Heavy";
+}
+
+    .btn-search:hover, .btn-search:focus {
+        color:#fff;
+        background-color:#e25345;
+    }
+
+.btn-big {
+    padding: 18px 36px;
+    font-size: 22px;
+    margin-top: -5px;
+}
+
+.most-search-area {
+    margin-top:20px;
+}
+
+.line-left {
+    float: left;
+    width: 28%;
+    margin-right: 53px;
+    border-top: 1px solid #adadad;
+    margin-top: 34px;
+}
+
+.line-header {
+    float: left;
+    margin-right: 53px;
+}
+
+    .line-header h3 {
+        color:#056571;
+    }
+
+.line-right {
+    float:left;
+    width:28%;
+    border-top:1px solid #adadad;
+    margin-top: 34px;
+}
+
+.top-list-country {
+    list-style:none;
+    margin-top:25px;
+}
+
+    .top-list-country li {
+        float:left;
+        width:20%;
+    }
+
+    .top-list-country li h4 {
+        font-size:20px;
+    }
+
+.top-list-city {
+    list-style:none;
+    padding-left:0px;
+}
+
+.top-list-city li {
+    clear:both;
+    font-size:16px;
+}
+
+.top-list-city li a {
+    color:#414141;
+    font-family: "Futura Std Heavy";
+}
+
+.footer-border {
+    min-height: 17px;
+    width: 100%;
+    right: 0;
+    left: 0;
+    background-color: #FF6A5C;
+}
+
+.footer-area {
+    min-height: 255px;
+    background-color: #414141;
+    width: 100%;
+    right: 0;
+    left: 0;
+}
+
+.logo-footer-area {
+    text-align:center;
+    color:#fff;
+    font-size:14px;
+    font-family: "Futura Std Heavy";
+    margin-top: 20px;
+}
+
+.footer-col h2 {
+    color:#fff;
+    margin-top:45px;
+}
+
+.footer-col ul {
+    list-style:none;
+    padding-left:0;
+}
+
+.footer-col ul li {
+    margin-top:5px;
+}
+
+.footer-col ul li a {
+    color:#fff;
+    font-size:16px;
+}
+
+.main-img {
+    width: 100%;
+    height: 350px;
+    background-size: cover;
+    box-shadow: 0px 1px 2px #999;
+}
+
+.p-price {
+    height:45px;
+    background: rgba(255, 255, 255, .85);
+    margin-top:-45px;
+    padding-top:10px;
+    padding-left:25px;
+}
+
+    .p-price p {
+            font-size:20px;
+           font-family: "Futura Std Heavy";
+           
+    }
+
+.p-menu {
+    width: 100%;
+    height: 45px;
+    margin-top: -55px;
+    background: rgba(255, 255, 255, .85);
+}
+
+
+
+    .p-menu ul {
+        list-style: none;
+        padding-left: 15px;
+    }
+
+        .p-menu ul li {
+            float: left;
+            margin-right: 15px;
+        }
+
+        .p-menu ul li a {
+            color: #414141;
+            display: block;
+            padding: 13px 15px 8px;
+            font-family: "Futura Std Heavy";
+            font-size:16px;
+        }
+
+            .p-menu ul li a.active, .p-menu ul li a:hover, .p-menu ul li a:focus {
+                border-bottom: 2px solid #056571;
+                text-decoration: none;
+            }
+
+            .p-menu ul li#navpics a {
+                color:#FF6A5C;
+            }
+
+.p-titles {
+    margin-top:45px;
+}
+
+.p-container {
+    margin-bottom:65px;
+}
+
+.p-description {
+    width:80%;
+    padding-bottom:45px;
+}
+
+.p-facts {
+    margin-top:45px;
+}
+
+.fact-list {
+    margin-top:25px;
+}
+
+.fact-list, .fact-second-left {
+    list-style:none;
+    padding-left:0;
+}
+
+.fact-second {
+    list-style:none;
+}
+
+.fact-list li {
+    float:left;
+}
+
+.fact-second li, .fact-second-left li {
+    clear:both;
+}
+
+.fact-second li p {
+    font-family: "Futura Std Heavy";
+}
+
+.r-box {
+    border-left:1px solid #adadad;
+    border-right:1px solid #adadad;
+    border-bottom:1px solid #adadad;
+    padding-bottom:15px;
+    padding-left:15px;
+}
+
+.p-image-container {
+    margin-top:45px;
+    margin-bottom:25px;
+}
+
+.p-content-header {
+    padding:1px;
+    padding-left:25px;
+    padding-bottom:10px;
+    /*border-top:1px solid #adadad;*/
+    border-bottom:1px solid #adadad;
+    width:100%;
+    margin-bottom:25px;
+}
+
+.p-content-area {
+    margin-left:20px;
+}
+
+.btn-desc {
+    margin-right:15px;
+}
+

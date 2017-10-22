@@ -1,0 +1,12 @@
+﻿@model BC.Web.Controllers.ListBlobViewModel
+
+<h2>List blobs</h2>
+
+<ul>
+    @foreach (var item in Model.Blobs)
+    {
+        <li>@item</li>
+    }
+</ul>
+<br /><br />
+<img alt="First image" src="@Model.FirstImage" />

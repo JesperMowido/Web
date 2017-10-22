@@ -1,0 +1,46 @@
+﻿@model BC.Intranet.Models.ProductImageViewModel
+
+@{
+    ViewBag.Title = "UploadProductImages";
+}
+
+<h2>UploadProductImages</h2>
+
+<div class="row">
+    <div class="container">
+        <div class="col-md-6">
+            @using (Html.BeginForm("UploadProductImages", "Product", FormMethod.Post, new { enctype = "multipart/form-data", productId = Model.ProductId }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>Upload images</h4>
+                    <hr />
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input type="file" name="files" multiple />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Upload images" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-6">
+            @foreach (var src in Model.Blobs)
+            {
+                <div style="width:400px;">
+                    <img src="@src" alt="@src" style="width:100%; height:auto; margin-bottom:6px;" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

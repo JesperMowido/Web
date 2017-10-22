@@ -1,0 +1,123 @@
+﻿@model BC.Web.Models.BaseViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @********* TEMP - REMOVE **********@
+    <meta name="robots" content="noindex, nofollow" />
+    @***********************************@
+    <title>@Model.PageTitle</title>
+    
+    <style type="text/css">
+        @@font-face {
+            font-family: 'Futura Std Book';
+            src: url('../../../frame/fonts/Futura Std Book.eot');
+            src: url('../../../frame/fonts/Futura Std Book.eot?#iefix') format('embedded-opentype'), url('../../../frame/fonts/Futura Std Book.woff') format('woff'), url('../../../frame/fonts/Futura Std Book.ttf') format('truetype'), url('../../../frame/fonts/Futura Std Book.svg') format('svg');
+        }
+
+        @@font-face {
+            font-family: 'Futura Std Heavy';
+            src: url('../../../frame/fonts/Futura Std Heavy.eot');
+            src: url('../../../frame/fonts/Futura Std Heavy.eot?#iefix') format('embedded-opentype'), url('../../../frame/fonts/Futura Std Heavy.woff') format('woff'), url('../../../frame/fonts/Futura Std Heavy.ttf') format('truetype'), url('../../../frame/fonts/Futura Std Heavy.svg') format('svg');
+        }
+
+        @@font-face {
+            font-family: 'Futura Std BookOblique';
+            src: url('../../../frame/fonts/FuturaStd-BookOblique.eot');
+            src: url('../../../frame/fonts/FuturaStd-BookOblique.eot?#iefix') format('embedded-opentype'), url('../../../frame/fonts/FuturaStd-BookOblique.woff') format('woff'), url('../../../frame/fonts/FuturaStd-BookOblique.ttf') format('truetype'), url('../../../frame/fonts/FuturaStd-BookOblique.svg') format('svg');
+        }
+
+        @@font-face {
+            font-family: 'FontAwesome';
+            src: url('/frame/fonts/fontawesome-webfont.eot?v=3.1.0');
+            src: url('/frame/fonts/fontawesome-webfont.eot?#iefix&v=3.1.0') format('embedded-opentype'), url('/frame/fonts/fontawesome-webfont.woff?v=3.1.0') format('woff'), url('/frame/fonts/fontawesome-webfont.ttf?v=3.1.0') format('truetype'), url('/frame/fonts/fontawesome-webfont.svg#FontAwesomeRegular?v=3.1.0') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+
+
+    @Styles.Render("~/frame/css")
+    @Scripts.Render("~/bundles/modernizr")
+    
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="logo-area">
+                    <a href="/">
+                        <img src="https://mowido.blob.core.windows.net/icons/logo-dark.png" alt="Mowido" />
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Buy", "Index", "Home", htmlAttributes: new { @class = "melon" })</li>
+                    <li>@Html.ActionLink("Sell", "About", "Home")</li>
+                    <li>@Html.ActionLink("About", "Contact", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    @RenderSection("TopBody", required: false)
+
+    <div class="container body-content test">
+        @RenderBody()
+    </div>
+
+        <footer>
+            <div class="footer-border">
+
+            </div>
+            <div class="footer-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="logo-footer-area">
+                                <a href="/">
+                                    <img src="https://mowido.blob.core.windows.net/icons/logo-white.png" alt="Mowido" />
+                                </a>
+                                <p>Copyright © 2017 Mowido</p>
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-3 footer-col">
+                            <h2>Top 5 Countries</h2>
+                            <ul>
+                                <li><a href="/">Spain</a></li>
+                                <li><a href="/">France</a></li>
+                                <li><a href="/">Italy</a></li>
+                                <li><a href="/">Portugal</a></li>
+                                <li><a href="/">Germany</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2 footer-col">
+                            <h2>Top 5 Cities</h2>
+                            <ul>
+                                <li><a href="/">Barcelona</a></li>
+                                <li><a href="/">Paris</a></li>
+                                <li><a href="/">London</a></li>
+                                <li><a href="/">Berlin</a></li>
+                                <li><a href="/">Rome</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+</body>
+</html>

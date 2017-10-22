@@ -1,0 +1,169 @@
+﻿@model BC.Web.Models.ProductViewModel
+
+@section TopBody{
+    <div class="main-img" style="background-image: url('@Model.TopImage');">
+        
+    </div>
+}
+
+<div class="p-container">
+    <div class="col-md-8 p-content">
+        <div class="p-menu">
+            <ul>
+                @if (!string.IsNullOrEmpty(Model.ExternalPicLink))
+                {
+                    <li id="navpics"><a href="@Model.ExternalPicLink" target="_blank">Pictures</a></li>
+                }
+                
+                <li id="navabout"><a href="#about">About</a></li>
+                <li id="navmap"><a href="#map">Map</a></li>
+                <li id="navsales"><a href="#seller">Seller</a></li>
+                @*<li class="relative" id="navarea"><a href="#reviews">Area </a></li>*@
+            </ul>
+        </div>
+        <div class="row">
+            <div class="container">
+                <div class="col-md-12 p-content-area">
+                    <div class="p-titles">
+                        <h1>@Model.Header</h1>
+                        <h4>@Model.PlaceHeader</h4>
+                    </div>
+                    <div class="p-description">
+                        <p>
+                            @Model.Description
+                        </p>
+                    </div>
+                    @if (!string.IsNullOrEmpty(Model.ExternalLink))
+                    {
+                        <a class="btn btn-search right btn-desc" href="@Model.ExternalLink" target="_blank">Read more about this property</a>
+                    }
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="p-image-container">
+                        <div class="p-content-header">
+                            <h2>Pictures of the property</h2>
+                        </div>
+                        @foreach (var img in Model.Images)
+                        {
+                            <img src="@img" alt="Produktbild" />
+                        }
+                        
+                    </div>
+                   @if (!string.IsNullOrEmpty(Model.ExternalPicLink))
+                   {
+                        <a class="btn btn-search right" href="@Model.ExternalPicLink" target="_blank">View more pictures</a>
+                   }
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-4 rightcol">
+        <div class="p-price">
+            @if (!string.IsNullOrEmpty(Model.Price))
+            {
+                <p>@Model.Price EUR</p>
+            }
+            else
+            {
+                <p>No price</p>
+            }
+        </div>
+        <div class="r-box">
+            <div class="container">
+                <div class="p-facts">
+                    <h3>Fakta</h3>
+                    <ul class="fact-list">
+                        <li>
+                            <ul class="fact-second-left">
+                                <li>
+                                    @if (Model.LivingSpace.HasValue)
+                                    {
+                                        <p>Boarea</p>
+                                    }
+                                    
+                                    @if (Model.NumberOfRooms.HasValue)
+                                    {
+                                        <p>Antal rum</p>
+                                    }
+
+                                    @if (Model.PlotSize.HasValue)
+                                    {
+                                        <p>Tomtarea</p>
+                                    }
+
+                                    @if (!string.IsNullOrEmpty(Model.MonthlyCharge))
+                                    {
+                                        <p>Avgift/månad</p>
+                                    }
+
+                                    @if (!string.IsNullOrEmpty(Model.SquareMeterPrice))
+                                    {
+                                        <p>Pris/m²</p>    
+                                    }
+
+                                    @if (Model.YearBuilt.HasValue)
+                                    {
+                                        <p>Byggår</p>
+                                    }
+
+                                    @if(!string.IsNullOrEmpty(Model.SalesResponsibleName))
+                                    {
+                                        <p>Säljare</p>    
+                                    }
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="fact-second">
+                                <li>
+                                    @if (Model.LivingSpace.HasValue)
+                                    {
+                                        <p>@(Model.LivingSpace.Value) m²</p>
+                                    }
+
+                                    @if (Model.NumberOfRooms.HasValue)
+                                    {
+                                        <p>@Model.NumberOfRooms rum</p>
+                                    }
+
+                                    @if (Model.PlotSize.HasValue)
+                                    {
+                                        <p>@(Model.PlotSize) m²</p>
+                                    }
+                                    
+                                    @if (!string.IsNullOrEmpty(Model.MonthlyCharge))
+                                    {
+                                        <p>@(Model.MonthlyCharge)/mån</p>
+                                    }
+
+                                    @if (!string.IsNullOrEmpty(Model.SquareMeterPrice))
+                                    {
+                                        <p>@(Model.SquareMeterPrice)/m²</p>
+                                    }
+
+                                    @if (Model.YearBuilt.HasValue)
+                                    {
+                                        <p>@Model.YearBuilt</p>
+                                    }
+                                    
+                                    @if(!string.IsNullOrEmpty(Model.SalesResponsibleName))
+                                    {
+                                        <p>@Model.SalesResponsibleName</p>
+                                    }
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

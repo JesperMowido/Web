@@ -1,0 +1,99 @@
+﻿@model BC.Web.Models.HomeViewModel
+
+@section TopBody{ 
+    <div class="jumbotron">
+        <div class="start-search-area">
+            <h1 class="start-header"><span class="melon big-caps">Buy & Sell</span><br />your home abroad easily</h1>
+            <div class="start-search">
+                <input type="text" class="start-freetext" placeholder="Country, Area or City..."  />
+                <a href="/" class="btn btn-search btn-big">Search</a>
+            </div>
+            <div class="most-search-area">
+                <div class="top-search-line-area">
+                    <div class="line-left"></div>
+                    <div class="line-header">
+                        <h3>Top 5 Countries and Cities</h3>
+                    </div>
+                    <div class="line-right"></div>
+                </div>
+                <div class="clear"></div>
+                <div class="list-top-search">
+                    <ul class="top-list-country">
+                        <li>
+                            <h4><a href="/">Spanien</a></h4>
+                            <ul class="top-list-city">
+                                <li><a href="/">Malaga</a></li>
+                                <li><a href="/">Marbella</a></li>
+                                <li><a href="/">Torrevieja</a></li>
+                                <li><a href="/">Barcelona</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4><a href="/">Frankrike</a></h4>
+                            <ul class="top-list-city">
+                                <li><a href="/">Malaga</a></li>
+                                <li><a href="/">Marbella</a></li>
+                                <li><a href="/">Torrevieja</a></li>
+                                <li><a href="/">Barcelona</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4><a href="/">Italien</a></h4>
+                            <ul class="top-list-city">
+                                <li><a href="/">Malaga</a></li>
+                                <li><a href="/">Marbella</a></li>
+                                <li><a href="/">Torrevieja</a></li>
+                                <li><a href="/">Barcelona</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4><a href="/">Portugal</a></h4>
+                            <ul class="top-list-city">
+                                <li><a href="/">Malaga</a></li>
+                                <li><a href="/">Marbella</a></li>
+                                <li><a href="/">Torrevieja</a></li>
+                                <li><a href="/">Barcelona</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4><a href="/">Tyskland</a></h4>
+                            <ul class="top-list-city">
+                                <li><a href="/">Malaga</a></li>
+                                <li><a href="/">Marbella</a></li>
+                                <li><a href="/">Torrevieja</a></li>
+                                <li><a href="/">Barcelona</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>@Model.Header</h1>
+        <a href="/product/index/1">Test product</a>
+    </div>
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
