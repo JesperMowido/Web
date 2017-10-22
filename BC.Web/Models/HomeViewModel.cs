@@ -7,6 +7,6 @@ namespace BC.Web.Models
 {
     public class HomeViewModel : BaseViewModel
     {
-        
+        public string Test { get; set; }
     }
 }
