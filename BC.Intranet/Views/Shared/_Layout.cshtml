@@ -6,8 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow"/>
     <title>@Model.PageTitle</title>
-    @Styles.Render("~/frame/css")
-    @Scripts.Render("~/bundles/modernizr")
+    
+    @*@Scripts.Render("~/frame/scripts/modernizr")*@
+    <script src="https://mowido.blob.core.windows.net/scripts/modernizr-2.6.2.min.js" type="text/javascript"></script>
+
+    @*@Styles.Render("~/frame/css")*@
+    <link href="https://mowido.blob.core.windows.net/css/admin-style.1.0.min.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -37,8 +41,8 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @*@Scripts.Render("~/frame/scripts")*@
+    <script src="https://mowido.blob.core.windows.net/scripts/admin-scripts.1.0.min.js" type="text/javascript"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

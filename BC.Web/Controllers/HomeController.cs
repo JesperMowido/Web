@@ -12,7 +12,7 @@ namespace BC.Web.Controllers
     [Authorize]
     public class HomeController : BaseController
     {
-        [OutputCache(Duration = 3600, VaryByCustom = "id")]
+        [OutputCache(Duration = 216000, VaryByCustom = "none")]
         public ActionResult Index()
         {
             BillionCompanyDbContext db = BillionCompanyDbContext.Create();

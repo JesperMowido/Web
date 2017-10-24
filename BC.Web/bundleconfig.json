@@ -1,0 +1,25 @@
+[
+  {
+    "outputFileName": "Frame/css/site.1.0.0.min.css",
+    "inputFiles": [
+      "Frame/css/bootstrap.css",
+      "Frame/css/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/scripts/modernizr-2.6.2.min.js",
+    "inputFiles": [
+      "Frame/scripts/modernizr-2.6.2.js"
+    ]
+  },
+  {
+    "outputFileName": "Frame/scripts/scripts.1.0.0.min.js",
+    "inputFiles": [
+      "Frame/scripts/jquery-1.10.2.js",
+      "Frame/scripts/jquery.validate.js",
+      "Frame/scripts/jquery.validate.unobtrusive.js",
+      "Frame/scripts/bootstrap.js",
+      "Frame/scripts/respond.js"
+    ]
+  }
+]

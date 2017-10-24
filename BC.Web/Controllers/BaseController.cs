@@ -14,13 +14,28 @@ namespace BC.Web.Controllers
         protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
         {
             string cultureName = null;
+            string currentCulture = string.Empty;
+            string host = Request.Url.Host;
+
+            if (host.Contains("mowido.se"))
+            {
+                currentCulture = "sv";
+            }
+            else
+            {
+                currentCulture = "en-US";
+            }
 
             // Attempt to read the culture cookie from Request
-            HttpCookie cultureCookie = Request.Cookies["_culture"];
+            HttpCookie cultureCookie = Request.Cookies["_culture" + currentCulture];
             if (cultureCookie != null)
                 cultureName = cultureCookie.Value;
             else
-                cultureName = "en";
+            {
+                cultureName = currentCulture;
+                var cookie = new HttpCookie("_culture" + currentCulture);
+                cookie.Value = currentCulture;
+            }
                 //cultureName = Request.UserLanguages != null && Request.UserLanguages.Length > 0 ?
                 //        Request.UserLanguages[0] :  // obtain it from HTTP header AcceptLanguages
                 //        null;

@@ -11,7 +11,7 @@ using System.Web.Mvc;
 namespace BC.Web.Controllers
 {
     [HandleError, Authorize]
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         private BillionCompanyDbContext _db = BillionCompanyDbContext.Create();
         private string _topImage = string.Empty;

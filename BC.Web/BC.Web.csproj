@@ -198,7 +198,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\BlobsController.cs" />
+    <Compile Include="Frame\BlobsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
@@ -221,6 +221,9 @@
     <Content Include="Frame\fonts\Futura Std Heavy.svg" />
     <Content Include="Frame\fonts\FuturaStd-BookOblique.svg" />
     <Content Include="Frame\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Frame\scripts\modernizr-2.6.2.min.js">
+      <DependentUpon>modernizr-2.6.2.js</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Frame\css\Site.css" />
     <Content Include="Frame\scripts\bootstrap.js" />
@@ -238,6 +241,7 @@
     <Content Include="Frame\fonts\FuturaStd-BookOblique.eot" />
     <Content Include="Frame\fonts\FuturaStd-BookOblique.ttf" />
     <Content Include="Frame\fonts\FuturaStd-BookOblique.woff" />
+    <None Include="bundleconfig.json" />
     <None Include="Frame\scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Frame\scripts\jquery-1.10.2.js" />
     <Content Include="Frame\scripts\jquery-1.10.2.min.js" />
@@ -290,6 +294,9 @@
     <Content Include="Views\Blobs\ListBlobs.cshtml" />
     <Content Include="Views\Shared\_LayoutStandard.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\Mowido Web.pubxml" />
+    <None Include="Properties\PublishProfiles\MowidoWeb - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\MowidoWeb - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -350,7 +357,9 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\BuildBundlerMinifier.2.6.362\build\BuildBundlerMinifier.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\BuildBundlerMinifier.2.6.362\build\BuildBundlerMinifier.targets'))" />
   </Target>
+  <Import Project="..\packages\BuildBundlerMinifier.2.6.362\build\BuildBundlerMinifier.targets" Condition="Exists('..\packages\BuildBundlerMinifier.2.6.362\build\BuildBundlerMinifier.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

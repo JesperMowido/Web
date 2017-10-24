@@ -217,6 +217,7 @@
     <Content Include="Frame\images\dream-house.jpg" />
     <Content Include="Frame\scripts\bootstrap.js" />
     <Content Include="Frame\scripts\bootstrap.min.js" />
+    <None Include="bundleconfig.json" />
     <None Include="Frame\scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Frame\scripts\jquery-1.10.2.js" />
     <Content Include="Frame\scripts\jquery-1.10.2.min.js" />
@@ -226,6 +227,9 @@
     <Content Include="Frame\scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Frame\scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Frame\scripts\modernizr-2.6.2.js" />
+    <Content Include="Frame\scripts\modernizr-2.6.2.min.js">
+      <DependentUpon>modernizr-2.6.2.js</DependentUpon>
+    </Content>
     <Content Include="Frame\scripts\respond.js" />
     <Content Include="Frame\scripts\respond.min.js" />
     <None Include="Frame\scripts\_references.js" />
@@ -236,6 +240,8 @@
     <Content Include="Frame\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Frame\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Frame\scripts\jquery-1.10.2.min.map" />
+    <None Include="Properties\PublishProfiles\MowidoAdmin - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\MowidoAdmin - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -248,7 +254,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

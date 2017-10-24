@@ -148,11 +148,14 @@ namespace BC.Intranet.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, InsertDate = DateTime.Now };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var user = new User { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Password = UserManager.PasswordHasher.HashPassword(model.Password), InsertDate = DateTime.Now };
+
+                var result = await UserManager.CreateAsync(user);
+
                 if (result.Succeeded)
                 {
-                    await UserManager.AddToRoleAsync(user.Id, "Admin");
+                    await UserManager.AddToRoleAsync(user.Id, BCRoles.Admin);
+                    await UserManager.AddToRoleAsync(user.Id, BCRoles.Web);
 
                     //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
@@ -162,7 +165,7 @@ namespace BC.Intranet.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "start");
+                    return Redirect("/");
                 }
                 AddErrors(result);
             }
