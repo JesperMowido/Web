@@ -25,6 +25,13 @@ namespace Core.Infrastructure
             ExecuteModelMapper<PlaceModelMapper>(modelBuilder);
             ExecuteModelMapper<ProductTypeModelMapper>(modelBuilder);
             ExecuteModelMapper<ProductModelMapper>(modelBuilder);
+
+            ////////// BROKERS IMPORT ///////////
+            ExecuteModelMapper<SkandiaProductModelMapper>(modelBuilder);
+            ExecuteModelMapper<WretmanProductModelMapper>(modelBuilder);
+            ExecuteModelMapper<PortugalMaklarnaProductModelMapper>(modelBuilder);
+            ExecuteModelMapper<NordicFranceProductModelMapper>(modelBuilder);
+            ExecuteModelMapper<CCHomesProductModelMapper>(modelBuilder);
         }
 
         private void ExecuteModelMapper<TModelMapper>(DbModelBuilder modelBuilder) where TModelMapper : IBillionCompanyMapperBase, new()

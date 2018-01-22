@@ -15,6 +15,7 @@ using Core.Accounts;
 
 namespace BC.Web.Controllers
 {
+    [Authorize]
     public class AccountController : BaseController
     {
         private ApplicationSignInManager _signInManager;

@@ -52,6 +52,10 @@
       <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Azure.Search, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.Search.3.0.2\lib\net45\Microsoft.Azure.Search.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -69,6 +73,18 @@
       <HintPath>..\packages\Microsoft.Data.Services.Client.5.8.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.2.3.4\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.4\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Spatial, Version=6.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Spatial.6.15.0\lib\portable-net45+win+wpa81\Microsoft.Spatial.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=8.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAzure.Storage.8.5.0\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
       <Private>True</Private>
@@ -80,6 +96,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Spatial, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Spatial.5.8.2\lib\net40\System.Spatial.dll</HintPath>
       <Private>True</Private>
@@ -198,9 +216,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Frame\BlobsController.cs" />
+    <Compile Include="Controllers\BlobsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\SiteMapController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -209,20 +229,41 @@
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
+    <Compile Include="Models\SearchViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="android-chrome-144x144.png" />
+    <Content Include="apple-touch-icon.png" />
+    <Content Include="browserconfig.xml" />
+    <Content Include="favicon-16x16.png" />
+    <Content Include="favicon-32x32.png" />
+    <Content Include="favicon.ico" />
     <Content Include="Frame\css\bootstrap.css" />
     <Content Include="Frame\css\bootstrap.min.css" />
-    <Content Include="favicon.ico" />
+    <Content Include="Frame\css\slick-theme.css" />
+    <Content Include="Frame\css\slick.css" />
     <Content Include="Frame\fonts\fontawesome-webfont.svg" />
-    <Content Include="Frame\fonts\Futura Std Book.svg" />
-    <Content Include="Frame\fonts\Futura Std Heavy.svg" />
-    <Content Include="Frame\fonts\FuturaStd-BookOblique.svg" />
     <Content Include="Frame\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Frame\fonts\gotham-book-webfont.svg" />
+    <Content Include="Frame\fonts\gotham-medium-webfont.svg" />
+    <Content Include="Frame\scripts\jquery.mobile.custom.js" />
+    <Content Include="Frame\scripts\jquery.mobile.custom.min.js" />
+    <Content Include="Frame\scripts\jquery.mobile.custom.min.min.js">
+      <DependentUpon>jquery.mobile.custom.min.js</DependentUpon>
+    </Content>
+    <Content Include="Frame\scripts\mapscript.js" />
     <Content Include="Frame\scripts\modernizr-2.6.2.min.js">
       <DependentUpon>modernizr-2.6.2.js</DependentUpon>
+    </Content>
+    <Content Include="Frame\scripts\search.js" />
+    <Content Include="Frame\scripts\search.min.js">
+      <DependentUpon>search.js</DependentUpon>
+    </Content>
+    <Content Include="Frame\scripts\slick.js" />
+    <Content Include="Frame\scripts\slick.min.js">
+      <DependentUpon>slick.js</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
     <Content Include="Frame\css\Site.css" />
@@ -232,16 +273,13 @@
     <Content Include="Frame\fonts\fontawesome-webfont.ttf" />
     <Content Include="Frame\fonts\fontawesome-webfont.woff" />
     <Content Include="Frame\fonts\FontAwesome.otf" />
-    <Content Include="Frame\fonts\Futura Std Book.eot" />
-    <Content Include="Frame\fonts\Futura Std Book.ttf" />
-    <Content Include="Frame\fonts\Futura Std Book.woff" />
-    <Content Include="Frame\fonts\Futura Std Heavy.eot" />
-    <Content Include="Frame\fonts\Futura Std Heavy.ttf" />
-    <Content Include="Frame\fonts\Futura Std Heavy.woff" />
-    <Content Include="Frame\fonts\FuturaStd-BookOblique.eot" />
-    <Content Include="Frame\fonts\FuturaStd-BookOblique.ttf" />
-    <Content Include="Frame\fonts\FuturaStd-BookOblique.woff" />
     <None Include="bundleconfig.json" />
+    <Content Include="Frame\fonts\gotham-book-webfont.eot" />
+    <Content Include="Frame\fonts\gotham-book-webfont.ttf" />
+    <Content Include="Frame\fonts\gotham-book-webfont.woff" />
+    <Content Include="Frame\fonts\gotham-medium-webfont.eot" />
+    <Content Include="Frame\fonts\gotham-medium-webfont.ttf" />
+    <Content Include="Frame\fonts\gotham-medium-webfont.woff" />
     <None Include="Frame\scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Frame\scripts\jquery-1.10.2.js" />
     <Content Include="Frame\scripts\jquery-1.10.2.min.js" />
@@ -254,21 +292,29 @@
     <Content Include="Frame\scripts\respond.js" />
     <Content Include="Frame\scripts\respond.min.js" />
     <Content Include="Frame\scripts\_references.js" />
+    <Content Include="mstile-150x150.png" />
+    <Content Include="robots.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="safari-pinned-tab.svg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -294,12 +340,22 @@
     <Content Include="Views\Blobs\ListBlobs.cshtml" />
     <Content Include="Views\Shared\_LayoutStandard.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="manifest.json" />
     <None Include="Properties\PublishProfiles\Mowido Web.pubxml" />
     <None Include="Properties\PublishProfiles\MowidoWeb - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\MowidoWeb - Web Deploy.pubxml" />
+    <Content Include="Views\Search\ListSearchPlace.cshtml" />
+    <Content Include="Views\Search\ListAllPlaces.cshtml" />
+    <Content Include="Views\Home\BuyingHomeGuide.cshtml" />
+    <Content Include="Views\Home\BuyingHomeGuideSpanien.cshtml" />
+    <Content Include="Views\Home\BuyingHomeGuideItalien.cshtml" />
+    <Content Include="Views\Home\BuyingHomeGuidePortugal.cshtml" />
+    <Content Include="Views\Search\SearchMap.cshtml" />
+    <Content Include="Views\Search\_SearchFilters_RC.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\SiteMap\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Frame\fonts\glyphicons-halflings-regular.woff" />
@@ -310,6 +366,10 @@
     <Content Include="Frame\scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BC.Search\BC.Search.csproj">
+      <Project>{caf93229-6ff6-47a8-860e-5136bd583a8f}</Project>
+      <Name>BC.Search</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{2f6b058f-48b7-473f-8394-f9c30950c593}</Project>
       <Name>Common</Name>

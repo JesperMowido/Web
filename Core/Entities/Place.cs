@@ -14,6 +14,8 @@ namespace Core.Entities
         public string Name { get; set; }
         public string Lat { get; set; }
         public string Long { get; set; }
+        public string NameSV { get; set; }
+        public string DescriptionSV { get; set; }
 
         public virtual PlaceType PlaceType { get; set; }
     }

@@ -4,12 +4,12 @@
 
 <ul class="list-unstyled">
     <li>@Html.ActionLink("Create product", "CreateProduct", "Product")</li>
-    <li>@Html.ActionLink("Create product type", "CreateProductType", "Product")</li>
+    <li>@Html.ActionLink("Create place", "CreatePlace", "Place")</li>
 </ul>
 <h3>Products</h3>
 @foreach (var p in Model.Products)
 {
-    <p>@p.Address</p><a class="btn" href="/Product/UploadProductImages/@(p.Id)/0">Upload images</a><br />
+    <p>@p.Address <a class="btn" href="/Product/UploadProductImages/@(p.Id)/0">&raquo; Upload images</a> | <a class="btn" href="/Product/EditProduct/@(p.Id)">Edit</a> | <a class="btn" target="_blank" href="http://www.mowido.se/product/index/@(p.Id)">Link to Ad</a></p>
 }
 
 

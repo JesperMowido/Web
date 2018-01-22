@@ -148,7 +148,7 @@ namespace BC.Intranet.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Password = UserManager.PasswordHasher.HashPassword(model.Password), InsertDate = DateTime.Now };
+                var user = new User { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Password = UserManager.PasswordHasher.HashPassword(model.Password), InsertDate = DateTime.Now, BrokerName = model.BrokerName };
 
                 var result = await UserManager.CreateAsync(user);
 

@@ -34,6 +34,10 @@ namespace Core.Infrastructure.Mappings
             place.Property(i => i.Lat).IsOptional();
 
             place.Property(i => i.Long).IsOptional();
+
+            place.Property(i => i.NameSV).IsOptional();
+
+            place.Property(i => i.DescriptionSV).IsOptional();
         }
     }
 }

@@ -21,5 +21,193 @@
       "Frame/scripts/bootstrap.js",
       "Frame/scripts/respond.js"
     ]
+  },
+  {
+    "outputFileName": "Frame/css/slick.1.0.min.css",
+    "inputFiles": [
+      "Frame/css/slick-theme.css",
+      "Frame/css/slick.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/scripts/slick.min.js",
+    "inputFiles": [
+      "Frame/scripts/slick.js"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/site.1.0.1.min.css",
+    "inputFiles": [
+      "Frame/css/Site.css",
+      "Frame/css/bootstrap.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/site.1.0.2.min.css",
+    "inputFiles": [
+      "Frame/css/bootstrap.css",
+      "Frame/css/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/site.1.0.3.min.css",
+    "inputFiles": [
+      "Frame/css/bootstrap.css",
+      "Frame/css/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/scripts/search.min.js",
+    "inputFiles": [
+      "Frame/scripts/search.js"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/site.1.0.4.min.css",
+    "inputFiles": [
+      "Frame/css/bootstrap.css",
+      "Frame/css/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/site.1.0.5.min.css",
+    "inputFiles": [
+      "Frame/css/bootstrap.css",
+      "Frame/css/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/site.1.0.6.min.css",
+    "inputFiles": [
+      "Frame/css/bootstrap.css",
+      "Frame/css/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/site.1.0.7.min.css",
+    "inputFiles": [
+      "Frame/css/bootstrap.css",
+      "Frame/css/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/slick.1.1.min.css",
+    "inputFiles": [
+      "Frame/css/slick-theme.css",
+      "Frame/css/slick.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/site.1.0.8.min.css",
+    "inputFiles": [
+      "Frame/css/bootstrap.css",
+      "Frame/css/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/site.1.0.9.min.css",
+    "inputFiles": [
+      "Frame/css/bootstrap.css",
+      "Frame/css/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/site.1.1.0.min.css",
+    "inputFiles": [
+      "Frame/css/bootstrap.css",
+      "Frame/css/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/site.1.1.1.min.css",
+    "inputFiles": [
+      "Frame/css/bootstrap.css",
+      "Frame/css/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/Gzipped/site.1.0.6.min.css",
+    "inputFiles": [
+      "Frame/css/bootstrap.css",
+      "Frame/css/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/Gzipped/site.1.1.2.min.css",
+    "inputFiles": [
+      "Frame/css/bootstrap.css",
+      "Frame/css/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/Gzipped/site.1.1.4.min.css",
+    "inputFiles": [
+      "Frame/css/bootstrap.css",
+      "Frame/css/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/scripts/jquery.mobile.custom.min.min.js",
+    "inputFiles": [
+      "Frame/scripts/jquery.mobile.custom.min.js"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/Gzipped/site.1.1.5.min.css",
+    "inputFiles": [
+      "Frame/css/bootstrap.css",
+      "Frame/css/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/Gzipped/site.1.1.6.min.css",
+    "inputFiles": [
+      "Frame/css/bootstrap.css",
+      "Frame/css/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/Gzipped/site.1.1.7.min.css",
+    "inputFiles": [
+      "Frame/css/bootstrap.css",
+      "Frame/css/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/Gzipped/site.1.1.8.min.css",
+    "inputFiles": [
+      "Frame/css/bootstrap.css",
+      "Frame/css/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/Gzipped/site.1.1.9.min.css",
+    "inputFiles": [
+      "Frame/css/bootstrap.css",
+      "Frame/css/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/site.test.min.css",
+    "inputFiles": [
+      "Frame/css/bootstrap.css",
+      "Frame/css/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Frame/scripts/Minified/scripts.1.0.2.min.js",
+    "inputFiles": [
+      "Frame/scripts/jquery-1.10.2.js",
+      "Frame/scripts/jquery.validate.js",
+      "Frame/scripts/bootstrap.js",
+      "Frame/scripts/respond.js"
+    ]
+  },
+  {
+    "outputFileName": "Frame/css/Gzipped/site.1.2.1.min.css",
+    "inputFiles": [
+      "Frame/css/bootstrap.css",
+      "Frame/css/Site.css"
+    ]
   }
 ]

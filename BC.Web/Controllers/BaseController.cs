@@ -8,7 +8,6 @@ using System.Web.Mvc;
 
 namespace BC.Web.Controllers
 {
-    [Authorize]
     public class BaseController : Controller
     {
         protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)

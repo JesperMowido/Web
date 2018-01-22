@@ -1,0 +1,82 @@
+﻿@model BC.Intranet.Models.SkandiaImportViewModel
+
+<h2>SkandiaBroker Import</h2>
+
+<p>Number of imported products: <b>@Model.NumberOfProducts</b></p>
+
+<table class="table">
+    <tr>
+        <th>
+           Price
+        </th>
+        <th>
+            SalesPersonalId
+        </th>
+        <th>
+            Place Id - Place name
+        </th>
+        <th>
+            Living space
+        </th>
+        <th>
+            Rooms
+        </th>
+        <th>
+            External link
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Ref no
+        </th>
+        <th>
+            Lat
+        </th>
+        <th>
+            Long
+        </th>
+    </tr>
+
+@foreach (var item in Model.Products) {
+    <tr>
+        <td>
+            @item.Price
+        </td>
+        <td>
+            @item.SalesResponsibleId
+        </td>
+        <td>
+            @item.PlaceId - @item.DisplayPlace
+        </td>
+        <td>
+            @item.LivingSpace kvm
+        </td>
+        <td>
+            @item.NumberOfRooms rooms
+        </td>
+        <td>
+            @item.ExternalLink
+        </td>
+        <td>
+            @item.Address
+        </td>
+        <td>
+            @(item.Description.Length > 150 ? item.Description.Substring(0, 150) + "..." : item.Description)
+        </td>
+        <td>
+            @item.RefNr
+        </td>
+        <td>
+            @item.Lat
+        </td>
+        <td>
+            @item.Long
+        </td>
+    </tr>
+}
+
+</table>

@@ -53,7 +53,7 @@ namespace Core.Infrastructure.Mappings
 
             product.Property(i => i.ExternalLink).IsRequired();
 
-            product.Property(i => i.ExternalPicLink).IsRequired();
+            product.Property(i => i.ExternalPicLink).IsOptional();
 
             product.Property(i => i.InsertDate).IsRequired();
 
@@ -64,6 +64,12 @@ namespace Core.Infrastructure.Mappings
             product.Property(i => i.Long).IsOptional();
 
             product.Property(i => i.IsApproved).IsRequired();
+
+            product.Property(i => i.RefNr).IsOptional();
+
+            product.Property(i => i.ThumbnailUrl).IsOptional();
+
+            product.Property(i => i.PriceFilter).IsOptional();
         }
     }
 }

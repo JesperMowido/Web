@@ -117,10 +117,219 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Areas" xml:space="preserve">
+    <value>Areas</value>
+  </data>
+  <data name="Cities" xml:space="preserve">
+    <value>Cities</value>
+  </data>
+  <data name="Countries" xml:space="preserve">
+    <value>Countries</value>
+  </data>
+  <data name="Districts" xml:space="preserve">
+    <value>Districts</value>
+  </data>
+  <data name="Fact" xml:space="preserve">
+    <value>Fact</value>
+  </data>
+  <data name="ForSale" xml:space="preserve">
+    <value>For sale:</value>
+  </data>
+  <data name="Header_Default" xml:space="preserve">
+    <value>Find your house abroad</value>
+  </data>
+  <data name="Header_FindHouse" xml:space="preserve">
+    <value>Find your house, appartment or garden</value>
+  </data>
+  <data name="Header_SearchPlace" xml:space="preserve">
+    <value>Homes for sale</value>
+  </data>
+  <data name="LivingSpace" xml:space="preserve">
+    <value>Living space</value>
+  </data>
+  <data name="Map_Readmore" xml:space="preserve">
+    <value>Read more about the property</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>month</value>
+  </data>
+  <data name="MonthlyCharge" xml:space="preserve">
+    <value>Monthly charge</value>
+  </data>
+  <data name="NoPrice" xml:space="preserve">
+    <value>No price</value>
+  </data>
+  <data name="NumberOfRooms" xml:space="preserve">
+    <value>Rooms</value>
+  </data>
   <data name="PageTitle" xml:space="preserve">
     <value>Mowido - Find your property world wide</value>
   </data>
+  <data name="PlotSize" xml:space="preserve">
+    <value>Plot size</value>
+  </data>
+  <data name="PMenu_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="PMenu_Map" xml:space="preserve">
+    <value>Map</value>
+  </data>
+  <data name="PMenu_Pictures" xml:space="preserve">
+    <value>More pictures</value>
+  </data>
+  <data name="PMenu_Seller" xml:space="preserve">
+    <value>About broker</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="Product_Map" xml:space="preserve">
+    <value>Map location</value>
+  </data>
+  <data name="Product_Pictures" xml:space="preserve">
+    <value>Pictures of the house</value>
+  </data>
+  <data name="Product_ReadMore" xml:space="preserve">
+    <value>Read more about this property</value>
+  </data>
+  <data name="Product_ViewPictures" xml:space="preserve">
+    <value>View more pictures</value>
+  </data>
+  <data name="Rooms" xml:space="preserve">
+    <value>rooms</value>
+  </data>
+  <data name="Search_SellerLink" xml:space="preserve">
+    <value>Go to broker</value>
+  </data>
+  <data name="Seller" xml:space="preserve">
+    <value>Broker</value>
+  </data>
+  <data name="Slug_Search_Start" xml:space="preserve">
+    <value>houses</value>
+  </data>
+  <data name="TopMenu_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="TopMenu_Buy" xml:space="preserve">
+    <value>Buy</value>
+  </data>
+  <data name="TopMenu_FindHouse" xml:space="preserve">
+    <value>Find house</value>
+  </data>
+  <data name="TopMenu_Sell" xml:space="preserve">
+    <value>Sell</value>
+  </data>
+  <data name="Url_FindHouse" xml:space="preserve">
+    <value>houses</value>
+  </data>
   <data name="Url_Login" xml:space="preserve">
     <value>login</value>
+  </data>
+  <data name="Url_Product" xml:space="preserve">
+    <value>house</value>
+  </data>
+  <data name="YearBuilt" xml:space="preserve">
+    <value>Year built</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Search_Placeholder" xml:space="preserve">
+    <value>Country, Area or City...</value>
+  </data>
+  <data name="Cannes" xml:space="preserve">
+    <value>Cannes</value>
+  </data>
+  <data name="Find_Dreamhouse" xml:space="preserve">
+    <value>Find your dreamhouse</value>
+  </data>
+  <data name="France" xml:space="preserve">
+    <value>France</value>
+  </data>
+  <data name="Italy" xml:space="preserve">
+    <value>Italy</value>
+  </data>
+  <data name="KohLanta" xml:space="preserve">
+    <value>Koh Lanta</value>
+  </data>
+  <data name="Lisboa" xml:space="preserve">
+    <value>Lisboa</value>
+  </data>
+  <data name="Malaga" xml:space="preserve">
+    <value>Malaga</value>
+  </data>
+  <data name="Nice" xml:space="preserve">
+    <value>Nice</value>
+  </data>
+  <data name="Portugal" xml:space="preserve">
+    <value>Portugal</value>
+  </data>
+  <data name="Spain" xml:space="preserve">
+    <value>Spain</value>
+  </data>
+  <data name="StartTop_Header" xml:space="preserve">
+    <value>Find your house abroad</value>
+  </data>
+  <data name="Start_Header" xml:space="preserve">
+    <value>Latest houses abroad for sale</value>
+  </data>
+  <data name="Thailand" xml:space="preserve">
+    <value>Thailand</value>
+  </data>
+  <data name="Top4ContryCity" xml:space="preserve">
+    <value>Top 4 Countries and Cities</value>
+  </data>
+  <data name="Top5City" xml:space="preserve">
+    <value>Top 5 Cities</value>
+  </data>
+  <data name="Top5Country" xml:space="preserve">
+    <value>Top 5 Countries</value>
+  </data>
+  <data name="About_Content" xml:space="preserve">
+    <value>Vill du köpa hus i Spanien, lägenhet i Frankrike eller en strandvilla i Thailand, då har du hittat rätt.
+Mowido grundades för oss som älskar semester utomlands och drömmer om ett andra hem i fjärran
+land. På Mowido samlar vi bostadsannonser från de populäraste semesterorterna för oss svenskar.
+Alla annonser på vår sida säljs av registrerade mäklare så du kan vara säker på att din bostadsaffär
+sköts enligt konstens alla regler.
+&lt;br /&gt;
+Knappa in ett land, stad eller område i sökrutan och du får fram matchande resultat. Därefter klickar
+du dig vidare till en bostad som du gillar, vill du sedan veta mer om ett objekt slussar vi dig vidare
+direkt till mäklarens objektsbeskrivning. Vårt mål är att göra det så enkelt som möjligt för människor
+att hitta den utlandsbostad som de går och längtar efter.
+&lt;br /&gt;
+Är du redan en av många som förverkligat din dröm och nu går i tankarna att sälja din bostad
+utomlands är Mowido vägen att gå. Kontakta då en mäklare, förslagsvis någon som vi samarbetar
+med (våra samarbetspartners), så hjälper dem dig.
+&lt;br /&gt;
+Om du som läser detta representerar en mäklarbyrå och vill att dina utlandsbostäder ska få synas på
+vår sida går det bra att maila till &lt;a href="mailto:hector@mowido.com"&gt;hector@mowido.com&lt;/a&gt;. Vi skulle verkligen uppskatta ett sådant
+förtroende och vet att det kommer gynna era affärer. Tack på förhand!</value>
+  </data>
+  <data name="About_Header" xml:space="preserve">
+    <value>About us</value>
+  </data>
+  <data name="About_PageTitle" xml:space="preserve">
+    <value>About us - Mowido</value>
+  </data>
+  <data name="About_TextHeader" xml:space="preserve">
+    <value>Drömmer du också om att köpa bostad utomlands?</value>
+  </data>
+  <data name="Url_About" xml:space="preserve">
+    <value>/about</value>
+  </data>
+  <data name="MetaDesc_SERP" xml:space="preserve">
+    <value>Find your house abroad in {0}. Search over 10 000 houses, appartments and gardens at Mowido.</value>
+  </data>
+  <data name="MetaDesc_Startpage" xml:space="preserve">
+    <value>Hitta ditt hus utomlands hos Mowido. Hos Mowido finns över 10 000 hus, lägenheter och tomter över hela världen.</value>
+  </data>
+  <data name="AboutBroker" xml:space="preserve">
+    <value>About real estate agent</value>
+  </data>
+  <data name="TopMenu_BuyingHome" xml:space="preserve">
+    <value>Buying a home</value>
+  </data>
+  <data name="Url_BuyingHome" xml:space="preserve">
+    <value>/buy-home</value>
   </data>
 </root>

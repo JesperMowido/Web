@@ -1,0 +1,54 @@
+﻿@model BC.Intranet.Models.CCHomesViewModel
+
+<h2>CCHomes Image Update</h2>
+
+<p>Number of imported products: <b>@Model.NumberOfProducts</b></p>
+
+<table class="table">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            ImageUrl1
+        </th>
+        <th>
+            ImageUrl2
+        </th>
+        <th>
+            ImageUrl3
+        </th>
+        <th>
+            ImageUrl4
+        </th>
+        <th>
+            ImageUrl5
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Products)
+    {
+        <tr>
+            <td>
+                @item.Id
+            </td>
+            <td>
+                @item.ImageUrl1
+            </td>
+            <td>
+                @item.ImageUrl2
+            </td>
+            <td>
+                @item.ImageUrl3
+            </td>
+            <td>
+                @item.ImageUrl4
+            </td>
+            <td>
+                @item.ImageUrl5
+            </td>
+        </tr>
+    }
+
+</table>
+

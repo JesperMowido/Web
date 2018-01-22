@@ -14,7 +14,7 @@ namespace BC.Web.Models
             get
             {
                 if (string.IsNullOrEmpty(_pageTitle))
-                    _pageTitle = "Admin - Mowido";
+                    _pageTitle = Resources.Resources.Header_Default + " - Mowido";
 
                     return _pageTitle;
             }
@@ -22,5 +22,27 @@ namespace BC.Web.Models
         }
 
         public string Header { get; set; }
+
+        private string _host;
+
+        public string Host
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_host))
+                    _host = HttpContext.Current.Request.Url.Host;
+                return _host;
+            }
+            set { _host = value; }
+        }
+
+        public List<BreadCrumbItem> BreadCrumbs { get; set; }
+    }
+
+    public class BreadCrumbItem
+    {
+        public string Name { get; set; }
+        public string Url { get; set; }
+        public string FullName { get; set; }
     }
 }

@@ -31,6 +31,10 @@ namespace Core.Infrastructure.Mappings
 
             user.Property(i => i.Email).IsRequired();
 
+            user.Property(i => i.BrokerName).IsOptional();
+
+            user.Property(i => i.BrokerDescription).IsOptional();
+
             user.Property(i => i.Password).IsRequired();
 
             user.HasMany(i => i.Roles).WithMany(m => m.Users).Map(m => m.MapLeftKey("FKUserID").MapRightKey("FKRoleID").ToTable("UserRoles"));

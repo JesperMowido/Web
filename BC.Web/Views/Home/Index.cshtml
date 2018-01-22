@@ -1,69 +1,50 @@
 ﻿@model BC.Web.Models.HomeViewModel
 
+@section Header{
+
+    @if (Request.Url.Host.Contains("mowido.se"))
+    {
+        <link rel="canonical" href="https://www.mowido.se" />
+    }
+
+    <meta name="description" content="@Resources.Resources.MetaDesc_Startpage" />
+}
+
 @section TopBody{ 
+
     <div class="jumbotron">
         <div class="start-search-area">
-            <h1 class="start-header"><span class="melon big-caps">Buy & Sell</span><br />your home abroad easily</h1>
+            <h1 class="start-header">@Resources.Resources.StartTop_Header</h1>
             <div class="start-search">
-                <input type="text" class="start-freetext" placeholder="Country, Area or City..."  />
-                <a href="/" class="btn btn-search btn-big">Search</a>
+                <input type="hidden" name="placeId" id="place-hidden" data-startslug="@Resources.Resources.Url_FindHouse" data-host="@Model.Host">
+                <input type="search" name="place-field" id="place-field" autocomplete="off" class="start-freetext" list="result-places" placeholder="@Resources.Resources.Search_Placeholder"  />
+                <button onclick="SearchPlace($('#place-hidden').val(), $('#place-field').val());" class="btn btn-search btn-big">@Resources.Resources.Search</button>
             </div>
             <div class="most-search-area">
                 <div class="top-search-line-area">
                     <div class="line-left"></div>
                     <div class="line-header">
-                        <h3>Top 5 Countries and Cities</h3>
+                        <h3>@Resources.Resources.Top4ContryCity</h3>
                     </div>
                     <div class="line-right"></div>
                 </div>
                 <div class="clear"></div>
                 <div class="list-top-search">
                     <ul class="top-list-country">
-                        <li>
-                            <h4><a href="/">Spanien</a></h4>
-                            <ul class="top-list-city">
-                                <li><a href="/">Malaga</a></li>
-                                <li><a href="/">Marbella</a></li>
-                                <li><a href="/">Torrevieja</a></li>
-                                <li><a href="/">Barcelona</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <h4><a href="/">Frankrike</a></h4>
-                            <ul class="top-list-city">
-                                <li><a href="/">Malaga</a></li>
-                                <li><a href="/">Marbella</a></li>
-                                <li><a href="/">Torrevieja</a></li>
-                                <li><a href="/">Barcelona</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <h4><a href="/">Italien</a></h4>
-                            <ul class="top-list-city">
-                                <li><a href="/">Malaga</a></li>
-                                <li><a href="/">Marbella</a></li>
-                                <li><a href="/">Torrevieja</a></li>
-                                <li><a href="/">Barcelona</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <h4><a href="/">Portugal</a></h4>
-                            <ul class="top-list-city">
-                                <li><a href="/">Malaga</a></li>
-                                <li><a href="/">Marbella</a></li>
-                                <li><a href="/">Torrevieja</a></li>
-                                <li><a href="/">Barcelona</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <h4><a href="/">Tyskland</a></h4>
-                            <ul class="top-list-city">
-                                <li><a href="/">Malaga</a></li>
-                                <li><a href="/">Marbella</a></li>
-                                <li><a href="/">Torrevieja</a></li>
-                                <li><a href="/">Barcelona</a></li>
-                            </ul>
-                        </li>
+
+                        @foreach (var c in Model.Countries)
+                        {
+                            <li>
+                                <h4><a href="@Common.Helpers.UrlBuilder.PlaceUrl(c.Id, c.PlaceName, Resources.Resources.Url_FindHouse)">@c.PlaceName</a></h4>
+                                <ul class="top-list-city">
+                                    @foreach (var city in c.Cities)
+                                    {
+                                        <li><a href="@Common.Helpers.UrlBuilder.PlaceUrl(city.Id, city.PlaceName, Resources.Resources.Url_FindHouse)">@city.PlaceName</a></li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                       
                     </ul>
                 </div>
             </div>
@@ -73,27 +54,62 @@
 }
 
 <div class="row">
-    <div class="col-md-12">
-        <h1>@Model.Header</h1>
-        <a href="/product/index/2">Test product</a>
-    </div>
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="col-md-12 mobile-col">
+        <h2 class="starpage-h-latest">@Model.Header</h2>
+
+        @foreach (var product in Model.LatestFirst)
+        {
+            <div class="col-md-3 latest-product">
+                <a class="latest-link" href="@Common.Helpers.UrlBuilder.ProductUrl(product.Id, product.Address, Resources.Resources.Url_Product, product.PlaceName)">
+                    <div class="latest-header">
+                        <h3>@(product.PlaceName.Length > 15 ? product.PlaceName.Substring(0, 12) + "..." : product.PlaceName)</h3>
+                        <p>@product.CreatedDate</p>
+                    </div>
+                    <img src="@product.ImageUrl" alt="@product.Address" />
+                    <div class="latest-desc">
+                        <h4>@(product.Address.Length > 23 ? product.Address.Substring(0, 20) + "..." : product.Address)</h4>
+                        <p class="l-desc">
+                            @(product.Description.Length > 73 ? product.Description.Substring(0, 70) + "..." : product.Description)
+                        </p>
+                        <p><a class="btn btn-blue" href="@Common.Helpers.UrlBuilder.ProductUrl(product.Id, product.Address, Resources.Resources.Url_Product, product.PlaceName)">@Resources.Resources.Map_Readmore</a></p>
+                        <div class="clear"></div>
+                    </div>
+                </a>
+            </div>
+        }
+        
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-12 mobile-col">
+        @foreach (var product in Model.LatestSecond)
+        {
+            <div class="col-md-3 latest-product">
+                <a class="latest-link" href="@Common.Helpers.UrlBuilder.ProductUrl(product.Id, product.Address, Resources.Resources.Url_Product, product.PlaceName)">
+                    <div class="latest-header">
+                        <h3>@(product.PlaceName.Length > 15 ? product.PlaceName.Substring(0, 12) + "..." : product.PlaceName)</h3>
+                        <p>@product.CreatedDate</p>
+                    </div>
+                    <img src="@product.ImageUrl" alt="@product.Address" />
+                    <div class="latest-desc">
+                        <h4>@(product.Address.Length > 23 ? product.Address.Substring(0, 20) + "..." : product.Address)</h4>
+                        <p>
+                            @(product.Description.Length > 73 ? product.Description.Substring(0, 70) + "..." : product.Description)
+                        </p>
+                        <p><a class="btn btn-blue" href="@Common.Helpers.UrlBuilder.ProductUrl(product.Id, product.Address, Resources.Resources.Url_Product, product.PlaceName)">@Resources.Resources.Map_Readmore</a></p>
+                        <div class="clear"></div>
+                    </div>
+                </a>
+            </div>
+        }
+
+    </div>
+</div>
+
+@section scripts{
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+@*<script src="~/Frame/scripts/search.js" type="text/javascript"></script>*@
+<script src="https://mowido.blob.core.windows.net/scripts/search.1.0.5.min.js" type="text/javascript"></script>
+
+}

@@ -1,0 +1,15 @@
+﻿@model BC.Intranet.Models.PlaceListViewModel
+
+<h2>List of places</h2>
+
+<ul class="list-unstyled">
+    <li>@Html.ActionLink("Create place", "CreatePlace", "Place")</li>
+</ul>
+<h3>Places</h3>
+@foreach (var p in Model.Places)
+{
+    <p>@p.Id - <b>Name:</b> @p.Name <b>Swedish:</b> @p.NameSV <a class="btn" href="/Place/EditPlace/@(p.Id)">Edit</a></p>
+}
+
+
+

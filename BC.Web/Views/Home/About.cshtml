@@ -1,7 +1,12 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿@model BC.Web.Models.BaseViewModel
 
-<p>Use this area to provide additional information.</p>
+<div class="row">
+    <div class="container about">
+        <div class="col-md-8">
+            <h1>@Model.Header</h1>
+            <h2>@Resources.Resources.About_TextHeader</h2>
+            <p>@Html.Raw(Resources.Resources.About_Content)</p>
+        </div>
+    </div>
+</div>
+

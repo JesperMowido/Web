@@ -38,6 +38,13 @@ namespace Core.Infrastructure
         private IBillionCompanyRepository<Place> placeRepository;
         private IBillionCompanyRepository<PlaceType> placeTypeRepository;
 
+        //Brokers
+        private IBillionCompanyRepository<SkandiaProduct> skandiaProductRepository;
+        private IBillionCompanyRepository<WretmanProduct> wretmanProductRepository;
+        private IBillionCompanyRepository<PortugalMaklarnaProduct> portugalMaklarnaProductRepository;
+        private IBillionCompanyRepository<NordicFranceProduct> nordicFranceProductRepository;
+        private IBillionCompanyRepository<CCHomesProduct> ccHomesProductRepository;
+
         public IBillionCompanyRepository<User> UserRepository
         {
             get
@@ -119,6 +126,66 @@ namespace Core.Infrastructure
                     this.placeTypeRepository = new BillionCompanyRepository<PlaceType>(_context);
                 }
                 return placeTypeRepository;
+            }
+        }
+
+        public IBillionCompanyRepository<SkandiaProduct> SkandiaProductRepository
+        {
+            get
+            {
+                if (this.skandiaProductRepository == null)
+                {
+                    this.skandiaProductRepository = new BillionCompanyRepository<SkandiaProduct>(_context);
+                }
+                return skandiaProductRepository;
+            }
+        }
+
+        public IBillionCompanyRepository<WretmanProduct> WretmanProductRepository
+        {
+            get
+            {
+                if (this.wretmanProductRepository == null)
+                {
+                    this.wretmanProductRepository = new BillionCompanyRepository<WretmanProduct>(_context);
+                }
+                return wretmanProductRepository;
+            }
+        }
+
+        public IBillionCompanyRepository<PortugalMaklarnaProduct> PortugalMaklarnaProductRepository
+        {
+            get
+            {
+                if (this.portugalMaklarnaProductRepository == null)
+                {
+                    this.portugalMaklarnaProductRepository = new BillionCompanyRepository<PortugalMaklarnaProduct>(_context);
+                }
+                return portugalMaklarnaProductRepository;
+            }
+        }
+
+        public IBillionCompanyRepository<NordicFranceProduct> NordicFranceProductRepository
+        {
+            get
+            {
+                if (this.nordicFranceProductRepository == null)
+                {
+                    this.nordicFranceProductRepository = new BillionCompanyRepository<NordicFranceProduct>(_context);
+                }
+                return nordicFranceProductRepository;
+            }
+        }
+
+        public IBillionCompanyRepository<CCHomesProduct> CcHomesProductRepository
+        {
+            get
+            {
+                if (this.ccHomesProductRepository == null)
+                {
+                    this.ccHomesProductRepository = new BillionCompanyRepository<CCHomesProduct>(_context);
+                }
+                return ccHomesProductRepository;
             }
         }
     }

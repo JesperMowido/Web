@@ -1,9 +1,63 @@
-﻿@model BC.Web.Models.ProductViewModel
+﻿@using Common.Extensions 
+@model BC.Web.Models.ProductViewModel
+
+@section Header{
+
+<link rel="canonical" href="@Model.Url" />    
+@*<link href="https://mowido.blob.core.windows.net/css/slick.1.1.min.css" rel="stylesheet" />*@
+<meta name="description" content="@(Model.Description.Length > 150 ? Model.Description.Substring(0, 150) + "..." : Model.Description)" />
+
+    <style>
+        .full-screen {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+    </style>
+
+}
 
 @section TopBody{
-    <div class="main-img" style="background-image: url('@Model.TopImage');">
-        
+    <div class="main-img desktop-img" style="background-image: url('@Model.TopImage');">
+        <a data-toggle="modal" data-target="#imgModal">
+            <div class="fade-dark">
+                <p class="fade-dark-text">Klicka för fler bilder</p>
+            </div>
+        </a>
     </div>
+
+<div id="mobile-carousel" class="mob-carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        @for (int i = 0; i < Model.Images.Count; i++)
+        {
+            <li data-target="#mobile-carousel" data-slide-to="@i" @( i == 0 ? "class=\"active\"" : "")></li>
+        }
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+
+        @foreach (var img in Model.Images)
+        {
+            <div class="item">
+                <img src="@img" data-color="lightblue" alt="@Model.Address">
+            </div>
+        }
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#mobile-carousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#mobile-carousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
 }
 
 <div class="p-container">
@@ -12,110 +66,321 @@
             <ul>
                 @if (!string.IsNullOrEmpty(Model.ExternalPicLink))
                 {
-                    <li id="navpics"><a href="@Model.ExternalPicLink" target="_blank">Pictures</a></li>
+                    <li id="navpics"><a onclick="ga('send', 'event', 'Customer@(Model.CustomerId)', 'click external link', 'Go to customer @Model.SalesResponsibleName');" href="@Model.ExternalPicLink" target="_blank">@Resources.Resources.PMenu_Pictures</a></li>
                 }
                 
-                <li id="navabout"><a href="#about">About</a></li>
-                <li id="navmap"><a href="#map">Map</a></li>
-                <li id="navsales"><a href="#seller">Seller</a></li>
+                <li id="navabout"><a onclick="scrollToAnchor('about');" href="#about">@Resources.Resources.PMenu_About</a></li>
+
+                @if (Model.ShowMap)
+                {
+                    <li id="navmap"><a onclick="scrollToAnchor('map');" href="#map">@Resources.Resources.PMenu_Map</a></li>
+                }
+
+                @if (!string.IsNullOrEmpty(Model.BrokerDescription))
+                {
+                    <li id="navsales"><a onclick="scrollToAnchor('broker');" href="#broker">@Resources.Resources.PMenu_Seller</a></li>
+                }
                 @*<li class="relative" id="navarea"><a href="#reviews">Area </a></li>*@
             </ul>
         </div>
-        <div class="row">
+        <div id="about" class="row">
             <div class="container">
-                <div class="col-md-12 p-content-area">
+                @if (Model.BreadCrumbs.Any())
+                {
+                    <ul class="breadcrumbs" itemprop="breadcrumb">
+                        @for (int i = 0; i < Model.BreadCrumbs.Count(); i++)
+                        {
+                            var crumb = Model.BreadCrumbs.ElementAt(i);
+                            if (i < Model.BreadCrumbs.Count() - 1)
+                            {
+                                <li>
+                                    @if (!string.IsNullOrEmpty(crumb.Url))
+                                    { <a @Html.Raw("href=\"" + crumb.Url + "\"") title="@crumb.Name">@crumb.Name</a> <span class="divider"><i class="fa fa-chevron-right"></i></span> }
+                                    else
+                                    { @crumb.Name }
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="active"><p>@crumb.Name</p></li>
+                            }
+                        }
+                    </ul>
+                            <div class="clear"></div>
+                }
+                <div class="col-md-12 p-content-area" itemscope itemtype="http://schema.org/Product">
+
+                   
                     <div class="p-titles">
-                        <h1>@Model.Header</h1>
-                        <h4>@Model.PlaceHeader</h4>
+                        <h1 itemprop="name">@Model.Header</h1>
+                        <div itemscope itemtype="http://schema.org/Place">
+                            <h4 class="product-place-h" itemprop="name">@Model.PlaceHeader</h4>
+                            <div itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
+                                <meta itemprop="latitude" content="@Model.Lat" />
+                                <meta itemprop="longitude" content="@Model.Long" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mobile-facts">
+                        
+                        <div class="r-box">
+                            <div class="container">
+                                <div class="p-facts">
+                                    <div class="p-price">
+                                        @if (!string.IsNullOrEmpty(Model.Price))
+                                        {
+                                            <p>@Model.Price EUR</p>
+                                        }
+                                        else
+                                        {
+                                            <p>@Resources.Resources.NoPrice</p>
+                                        }
+                                    </div>
+                                    <h3>@Resources.Resources.Fact</h3>
+                                    <ul class="fact-list">
+                                        <li>
+                                            <ul class="fact-second-left">
+                                                <li>
+                                                    @if (Model.LivingSpace.HasValue)
+                                                    {
+                                                        <p>@Resources.Resources.LivingSpace</p>
+                                                    }
+
+                                                    @if (Model.NumberOfRooms.HasValue)
+                                                    {
+                                                        <p>@Resources.Resources.LivingSpace</p>
+                                                    }
+
+                                                    @if (Model.PlotSize.HasValue)
+                                                    {
+                                                        <p>@Resources.Resources.PlotSize</p>
+                                                    }
+
+                                                    @if (!string.IsNullOrEmpty(Model.MonthlyCharge))
+                                                    {
+                                                        <p>@Resources.Resources.MonthlyCharge</p>
+                                                    }
+
+                                                    @if (!string.IsNullOrEmpty(Model.SquareMeterPrice))
+                                                    {
+                                                        <p>@(Resources.Resources.Price)/m²</p>
+                                                    }
+
+                                                    @if (Model.YearBuilt.HasValue)
+                                                    {
+                                                        <p>@Resources.Resources.YearBuilt</p>
+                                                    }
+
+                                                    @if (!string.IsNullOrEmpty(Model.SalesResponsibleName))
+                                                    {
+                                                        <p>@Resources.Resources.Seller</p>
+                                                    }
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul class="fact-second">
+                                                <li>
+                                                    @if (Model.LivingSpace.HasValue)
+                                                    {
+                                                        <p>@(Model.LivingSpace.Value) m²</p>
+                                                    }
+
+                                                    @if (Model.NumberOfRooms.HasValue)
+                                                    {
+                                                        <p>@Model.NumberOfRooms @Resources.Resources.Rooms</p>
+                                                    }
+
+                                                    @if (Model.PlotSize.HasValue)
+                                                    {
+                                                        <p>@(Model.PlotSize) m²</p>
+                                                    }
+
+                                                    @if (!string.IsNullOrEmpty(Model.MonthlyCharge))
+                                                    {
+                                                        <p>@(Model.MonthlyCharge)/@Resources.Resources.Month</p>
+                                                    }
+
+                                                    @if (!string.IsNullOrEmpty(Model.SquareMeterPrice))
+                                                    {
+                                                        <p>@(Model.SquareMeterPrice)/m²</p>
+                                                    }
+
+                                                    @if (Model.YearBuilt.HasValue)
+                                                    {
+                                                        <p>@Model.YearBuilt</p>
+                                                    }
+
+                                                    @if (!string.IsNullOrEmpty(Model.SalesResponsibleName))
+                                                    {
+                                                        <p>@Model.SalesResponsibleName</p>
+                                                    }
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="p-description">
-                        <p>
-                            @Model.Description
+                        <p itemprop="description">
+                            @Html.LineBreakString(Model.Description)
                         </p>
                     </div>
                     @if (!string.IsNullOrEmpty(Model.ExternalLink))
                     {
-                        <a class="btn btn-search right btn-desc" href="@Model.ExternalLink" target="_blank">Read more about this property</a>
+                        <a itemprop="url" class="btn btn-search right btn-desc" onclick="ga('send', 'event', 'Customer@(Model.CustomerId)', 'click external link', 'Go to customer @Model.SalesResponsibleName');" href="@Model.ExternalLink" target="_blank">@Resources.Resources.Product_ReadMore</a>
                     }
                 </div>
             </div>
         </div>
+       
+        @if(Model.Images != null && Model.Images.Count > 0)
+        {
         
-        <div class="row">
-            <div class="container">
-                <div class="col-md-12">
-                    <div class="p-image-container">
-                        <div class="p-content-header">
-                            <h2>Pictures of the property</h2>
-                        </div>
-                        @foreach (var img in Model.Images)
-                        {
-                            <img src="@img" alt="Produktbild" />
-                        }
-                        
-                    </div>
-                   @if (!string.IsNullOrEmpty(Model.ExternalPicLink))
-                   {
-                        <a class="btn btn-search right" href="@Model.ExternalPicLink" target="_blank">View more pictures</a>
-                   }
-                </div>
+            <div class="row product-images">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="p-image-container" itemscope itemtype="http://schema.org/Thing">
+                            <div class="p-content-header">
+                                <h2>@Resources.Resources.Product_Pictures</h2>
+                            </div>
 
+                            <div id="mycarousel" class="carousel slide" data-ride="carousel">
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators">
+                                    @for (int i = 0; i < Model.Images.Count; i++)
+                                    {
+                                        <li data-target="#mobile-carousel" data-slide-to="@i" @( i == 0 ? "class=\"active\"" : "")></li>
+                                    }
+                                </ol>
+
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner" role="listbox">
+
+                                    @foreach (var img in Model.Images)
+                                    {
+                                        <div class="item">
+                                            <img src="@img" data-color="lightblue" alt="@Model.Address">
+                                        </div>
+                                    }
+                                </div>
+
+                                <!-- Controls -->
+                                <a class="left carousel-control" href="#mycarousel" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#mycarousel" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        
+                        </div>
+                       @if (!string.IsNullOrEmpty(Model.ExternalPicLink))
+                       {
+                            <a class="btn btn-search right" href="@Model.ExternalPicLink" onclick="ga('send', 'event', 'Customer@(Model.CustomerId)', 'click external link', 'Go to customer @Model.SalesResponsibleName');" target="_blank">@Resources.Resources.Product_ViewPictures</a>
+                       }
+                    </div>
+
+                </div>
             </div>
-        </div>
+
+        }
+
+        @if (Model.ShowMap)
+        {
+            <div id="map" class="row">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="p-image-container">
+                            <div class="p-content-header">
+                                <h2>@Resources.Resources.Product_Map - @Model.Header</h2>
+                            </div>
+                            <div id="dvMap" style="width: 100%; height: 500px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.BrokerDescription))
+        {
+            <div id="broker" class="row">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="p-d-container">
+                            <div class="p-content-header">
+                                <h2>@Resources.Resources.AboutBroker - @Model.SalesResponsibleName</h2>
+                            </div>
+                            <div class="p-description">
+                                <p>
+                                    @Html.LineBreakString(Model.BrokerDescription)
+                                </p>
+                            </div>
+                            <a class="btn btn-search right" href="@Model.ExternalPicLink" onclick="ga('send', 'event', 'Customer@(Model.CustomerId)', 'click external link', 'Go to customer @Model.SalesResponsibleName');" target="_blank">@Resources.Resources.Search_SellerLink</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
 
     </div>
     <div class="col-md-4 rightcol">
-        <div class="p-price">
+        <div class="p-price facts">
             @if (!string.IsNullOrEmpty(Model.Price))
             {
                 <p>@Model.Price EUR</p>
             }
             else
             {
-                <p>No price</p>
+                <p>@Resources.Resources.NoPrice</p>
             }
         </div>
-        <div class="r-box">
+        <div class="r-box facts">
             <div class="container">
                 <div class="p-facts">
-                    <h3>Fakta</h3>
+                    <h3>@Resources.Resources.Fact</h3>
                     <ul class="fact-list">
                         <li>
                             <ul class="fact-second-left">
                                 <li>
                                     @if (Model.LivingSpace.HasValue)
                                     {
-                                        <p>Boarea</p>
+                                        <p>@Resources.Resources.LivingSpace</p>
                                     }
                                     
                                     @if (Model.NumberOfRooms.HasValue)
                                     {
-                                        <p>Antal rum</p>
+                                        <p>@Resources.Resources.LivingSpace</p>
                                     }
 
                                     @if (Model.PlotSize.HasValue)
                                     {
-                                        <p>Tomtarea</p>
+                                        <p>@Resources.Resources.PlotSize</p>
                                     }
 
                                     @if (!string.IsNullOrEmpty(Model.MonthlyCharge))
                                     {
-                                        <p>Avgift/månad</p>
+                                        <p>@Resources.Resources.MonthlyCharge</p>
                                     }
 
                                     @if (!string.IsNullOrEmpty(Model.SquareMeterPrice))
                                     {
-                                        <p>Pris/m²</p>    
+                                        <p>@(Resources.Resources.Price)/m²</p>    
                                     }
 
                                     @if (Model.YearBuilt.HasValue)
                                     {
-                                        <p>Byggår</p>
+                                        <p>@Resources.Resources.YearBuilt</p>
                                     }
 
                                     @if(!string.IsNullOrEmpty(Model.SalesResponsibleName))
                                     {
-                                        <p>Säljare</p>    
+                                        <p>@Resources.Resources.Seller</p>    
                                     }
                                 </li>
                             </ul>
@@ -130,7 +395,7 @@
 
                                     @if (Model.NumberOfRooms.HasValue)
                                     {
-                                        <p>@Model.NumberOfRooms rum</p>
+                                        <p>@Model.NumberOfRooms @Resources.Resources.Rooms</p>
                                     }
 
                                     @if (Model.PlotSize.HasValue)
@@ -140,7 +405,7 @@
                                     
                                     @if (!string.IsNullOrEmpty(Model.MonthlyCharge))
                                     {
-                                        <p>@(Model.MonthlyCharge)/mån</p>
+                                        <p>@(Model.MonthlyCharge)/@Resources.Resources.Month</p>
                                     }
 
                                     @if (!string.IsNullOrEmpty(Model.SquareMeterPrice))
@@ -167,3 +432,203 @@
     </div>
     <div class="clear"></div>
 </div>
+
+<div id="imgModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+            <div id="modal-carousel" class="modal-carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    @for (int i = 0; i < Model.Images.Count; i++)
+                    {
+                        <li data-target="#modal-carousel" data-slide-to="@i" @( i == 0 ? "class=\"active\"" : "")></li>
+                    }
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+
+                    @foreach (var img in Model.Images)
+                    {
+                        <div class="item">
+                            <img src="@img" data-color="lightblue" alt="@Model.Address">
+                        </div>
+                    }
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#modal-carousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#modal-carousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+
+    </div>
+</div>
+
+@section scripts{
+    @if(Model.ShowMap)
+    {
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBML9XUO8FpiHQShjmlL7QnIw7UkWheOQE&callback=initMap"></script>
+    @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBML9XUO8FpiHQShjmlL7QnIw7UkWheOQE&callback=initMap" type="text/javascript"></script>*@
+    <script type="text/javascript">
+            var markers = @Html.Raw("[{'title': '" + Model.Address + "', 'lat' : '" + Model.Lat + "', 'lng':'" + Model.Long + "', 'description': '<a href=" + Model.ExternalLink + ">Read more about the house</a>'}]");
+            window.onload = function () {
+                var mapOptions = {
+                    center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+                    zoom: 8,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var infoWindow = new google.maps.InfoWindow();
+                var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+                for (i = 0; i < markers.length; i++) {
+                    var data = markers[i]
+                    var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+                    var marker = new google.maps.Marker({
+                        position: myLatlng,
+                        map: map,
+                        title: data.title
+                    });
+                    (function (marker, data) {
+                        google.maps.event.addListener(marker, "click", function (e) {
+                            infoWindow.setContent(data.description);
+                            infoWindow.open(map, marker);
+                        });
+                    })(marker, data);
+                }
+            }
+    </script>
+    }
+
+    @*<script src="~/Frame/scripts/jquery.mobile.custom.min.js" type="text/javascript"></script>*@
+    <script src="https://mowido.blob.core.windows.net/scripts/jquery.mobile.custom.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        var $item = $('.carousel .item'); 
+        var $wHeight = '394px'; //$(window).height();
+        $item.eq(0).addClass('active');
+        $item.height($wHeight); 
+        $item.addClass('full-screen');
+
+        $('.carousel img').each(function() {
+            var $src = $(this).attr('src');
+            var $color = $(this).attr('data-color');
+            $(this).parent().css({
+                'background-image' : 'url(' + $src + ')',
+                'background-color' : $color
+            });
+            $(this).remove();
+        });
+
+        $(window).on('resize', function (){
+            $wHeight = "394px"; //$(window).height();
+            $item.height($wHeight);
+        });
+
+        $('.carousel').carousel({
+            interval: 6000,
+            pause: "true"
+        });
+
+        var $item = $('.modal-carousel .item'); 
+        var $wHeight = '394px'; //$(window).height();
+        $item.eq(0).addClass('active');
+        $item.height($wHeight); 
+        $item.addClass('full-screen');
+
+        $('.modal-carousel img').each(function() {
+            var $src = $(this).attr('src');
+            var $color = $(this).attr('data-color');
+            $(this).parent().css({
+                'background-image' : 'url(' + $src + ')',
+                'background-color' : $color
+            });
+            $(this).remove();
+        });
+
+        $(window).on('resize', function (){
+            $wHeight = "394px"; //$(window).height();
+            $item.height($wHeight);
+        });
+
+        $('.modal-carousel').carousel({
+            interval: 6000,
+            pause: "true"
+        });
+
+
+        var $item = $('.mob-carousel .item'); 
+        var height = '250px';
+
+        if($(window).width() > 991)
+        {
+            height = '350px';
+        }
+        var $wHeight = height;
+        $item.eq(0).addClass('active');
+        $item.height($wHeight); 
+        $item.addClass('full-screen');
+
+        $('.mob-carousel img').each(function() {
+            var $src = $(this).attr('src');
+            var $color = $(this).attr('data-color');
+            $(this).parent().css({
+                'background-image' : 'url(' + $src + ')',
+                'background-color' : $color
+            });
+            $(this).remove();
+        });
+
+        $(window).on('resize', function (){
+            height = '250px';
+            if($(window).width() > 991)
+            {
+                height = '350px';
+            }
+
+            $wHeight = height; //$(window).height();
+            $item.height($wHeight);
+        });
+
+        $('.mob-carousel').carousel({
+            interval: 6000,
+            pause: "true"
+        });
+
+        
+
+        $(document).ready(function () {
+            $('.desktop-img').mouseover(function () {
+                $('.fade-dark').fadeIn(300);
+            });
+            $('.desktop-img').mouseleave(function () {
+                $('.fade-dark').fadeOut(150);
+            });
+
+            $(".mob-carousel").swiperight(function() {
+                $(this).carousel('prev');
+            });
+            $(".mob-carousel").swipeleft(function() {
+                $(this).carousel('next');
+            });
+
+           
+
+        });
+
+        function scrollToAnchor(aid){
+            console.log(aid);
+            var aTag = $("div[id='"+ aid +"']");
+            $('html,body').animate({scrollTop: aTag.offset().top},'slow');
+        };
+
+    </script>
+    
+}

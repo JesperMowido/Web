@@ -18,5 +18,28 @@ namespace BC.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        protected void Application_BeginRequest()
+        {
+            if (!Request.IsLocal)
+            {
+                if (HttpContext.Current.Request.Url.Host.Contains("mowido.se"))
+                {
+                    if ((!HttpContext.Current.Request.Url.Scheme.ToLower().Equals("https") ||
+                        !HttpContext.Current.Request.Url.Host.StartsWith("www.mowido.se")) && !HttpContext.Current.Request.Url.IsLoopback)
+                    {
+                        UriBuilder builder = new UriBuilder(HttpContext.Current.Request.Url);
+
+                        builder.Scheme = "https";
+                        builder.Host = "www.mowido.se";
+                        builder.Port = -1;
+
+                        Response.StatusCode = 301;
+                        Response.AddHeader("Location", builder.Uri.ToString());
+                        Response.End();
+                    }
+                }
+            }   
+        }
     }
 }

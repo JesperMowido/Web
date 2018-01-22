@@ -1,0 +1,33 @@
+﻿@model BC.Web.Models.BaseViewModel
+
+<div class="row">
+    <div class="container about guide">
+        <div class="col-md-8">
+            <h1>@Model.Header</h1><br />
+            <h2>Skaffa dig kunskaperna för att göra din dröm till verklighet.</h2>
+            <p>
+                Att köpa en bostad utomlands skiljer sig från att köpa en bostad i ditt land. Din mäklare kan erbjuda dig
+                all den erfarenhet som behövs för att du ska känna dig bekväm och trygg i din bostadsaffär. Därför är
+                det viktigt att ta hjälp av en registrerad mäklare när du köper bostad utomlands.
+            </p>
+            <p>
+                På <a href="/">Mowido.se</a> hittar du enkelt och snabbt din drömbostad utomlands. Vi samarbetar
+                med många mäklare, som vägleder dig i de ekonomiska och juridiska frågor
+                som kan uppstå.
+            </p>
+            <br /><br />
+            <h2>Guider för köp av bostäder utomlands</h2>
+            <ul class="list-guides">
+                <li>
+                    <a href="@(Resources.Resources.Url_BuyingHome + "/italien")"><i class="fa fa-globe" aria-hidden="true"></i> Att Köpa bostad i Italien</a>
+                </li>
+                <li>
+                    <a href="@(Resources.Resources.Url_BuyingHome + "/portugal")"><i class="fa fa-globe" aria-hidden="true"></i> Att Köpa bostad i Portugal</a>
+                </li>
+                <li>
+                    <a href="@(Resources.Resources.Url_BuyingHome + "/spanien")"><i class="fa fa-globe" aria-hidden="true"></i> Att köpa bostad i Spanien</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

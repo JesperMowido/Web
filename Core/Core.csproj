@@ -61,6 +61,11 @@
     <Compile Include="Accounts\BCRoles.cs" />
     <Compile Include="Accounts\CustomUserValidator.cs" />
     <Compile Include="Accounts\UserStoreService.cs" />
+    <Compile Include="Entities\Brokers\CCHomesProduct.cs" />
+    <Compile Include="Entities\Brokers\NordicFranceProduct.cs" />
+    <Compile Include="Entities\Brokers\PortugalMaklarnaProduct.cs" />
+    <Compile Include="Entities\Brokers\SkandiaProduct.cs" />
+    <Compile Include="Entities\Brokers\WretmanProduct.cs" />
     <Compile Include="Entities\Place.cs" />
     <Compile Include="Entities\PlaceType.cs" />
     <Compile Include="Entities\Product.cs" />
@@ -70,6 +75,11 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Infrastructure\BillionCompanyDbContext.cs" />
     <Compile Include="Infrastructure\BillionCompanyModelMapper.cs" />
+    <Compile Include="Infrastructure\Mappings\Brokers\CCHomesProductModelMapper.cs" />
+    <Compile Include="Infrastructure\Mappings\Brokers\NordicFranceProductModelMapper.cs" />
+    <Compile Include="Infrastructure\Mappings\Brokers\PortugalMaklarnaProductModelMapper.cs" />
+    <Compile Include="Infrastructure\Mappings\Brokers\SkandiaProductModelMapper.cs" />
+    <Compile Include="Infrastructure\Mappings\Brokers\WretmanProductModelMapper.cs" />
     <Compile Include="Infrastructure\Mappings\Interfaces\IEntityModelMapper.cs" />
     <Compile Include="Infrastructure\Mappings\PlaceModelMapper.cs" />
     <Compile Include="Infrastructure\Mappings\PlaceTypeModelMapper.cs" />

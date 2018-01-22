@@ -20,6 +20,8 @@ namespace Core.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+        public string BrokerName { get; set; }
+        public string BrokerDescription { get; set; }
         public string Password { get; set; }
         public virtual ICollection<Role> Roles { get; set; }
         public DateTime InsertDate { get; set; }

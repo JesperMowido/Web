@@ -17,8 +17,7 @@ namespace BC.Intranet.Models
 
     public class ProductViewModel : BaseViewModel
     {
-        [Required, Display(Name = "Product Type")]
-        public int ProductTypeId { get; set; }
+        public int? ProductId { get; set; }
 
         [Required, Display(Name = "Responseble sales person")]
         public int SalesResponsibleId { get; set; }
@@ -28,36 +27,53 @@ namespace BC.Intranet.Models
 
         [Required, Display(Name = "Description")]
         public string Description { get; set; }
+
+        [Display(Name = "Living space", Description = "Example: 44")]
         public int? LivingSpace { get; set; }
+
+        [Display(Name = "Number of rooms")]
         public int? NumberOfRooms { get; set; }
+
+        [Display(Name = "Price")]
+        [DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
         public decimal? Price { get; set; }
+
+        [Display(Name = "Monthly charge")]
+        [DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
         public decimal? MonthlyCharge { get; set; }
+
+        [Display(Name = "Square meter price")]
+        [DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
         public decimal? SquareMeterPrice { get; set; }
+
+        [Display(Name ="Year built")]
         public DateTime? YearBuilt { get; set; }
 
         [Required, Display(Name = "External link")]
         public string ExternalLink { get; set; }
+
+        [Display(Name = "External link for images")]
+        public string ExternalPicLink { get; set; }
 
         [Required, Display(Name = "Address")]
         public string Address { get; set; }
         public string Lat { get; set; }
         public string Long { get; set; }
 
-        [Display(Name = "Approve property")]
+        [Required, Display(Name = "Approve property")]
         public bool IsApproved { get; set; }
 
-        [Display(Name = "Area or...")]
-        public SelectList PlaceAreas { get; set; }
+        [Display(Name = "Ref Nr.")]
+        public string RefNr { get; set; }
 
-        [Display(Name = "...City")]
-        public SelectList PlaceCities { get; set; }
+        [Display(Name = "Plot size")]
+        public int? PlotSize { get; set; }
+
+        [Display(Name = "Place")]
+        public SelectList Places { get; set; }
 
         [Display(Name = "Responsible sales person")]
         public SelectList SalesPersons { get; set; }
-
-        [Display(Name = "Product type")]
-        public SelectList ProductTypes { get; set; }
-
     }
 
     public class ProductTypeViewModel : BaseViewModel
@@ -71,4 +87,6 @@ namespace BC.Intranet.Models
         public int ProductId { get; set; }
         public List<string> Blobs { get; set; }
     }
+
+   
 }

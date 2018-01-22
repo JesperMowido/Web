@@ -27,6 +27,9 @@ namespace Core.Entities
         public string Lat { get; set; }
         public string Long { get; set; }
         public bool IsApproved { get; set; }
+        public string RefNr { get; set; }
+        public string ThumbnailUrl { get; set; }
+        public double? PriceFilter { get; set; }
 
         public virtual ProductType ProductType { get; set; }
         public virtual User SalesResponsible { get; set; }
